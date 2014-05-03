@@ -26,7 +26,7 @@ $di->setShared(
   'config',
   function ()
   {
-    return new IniConfig(dirname(__FILE__) . "/src/config/config.ini");
+    return new IniConfig(dirname(__DIR__) . "/src/Config/config.ini");
   }
 );
 
