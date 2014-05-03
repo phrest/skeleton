@@ -16,6 +16,8 @@
 namespace PhalconAPISkeleton\Controllers;
 
 
+use PhalconAPISkeleton\Models\Users;
+
 class UserController
 {
   /**
@@ -24,7 +26,8 @@ class UserController
    */
   public function getUsers()
   {
-
+    // todo
+    return Users::find();
   }
 
   /**
@@ -33,7 +36,10 @@ class UserController
    */
   public function createUser()
   {
-
+    // todo
+    $user = new Users();
+    $user->name = "Todo";
+    $user->save();
   }
 
   /**
@@ -43,7 +49,8 @@ class UserController
    */
   public function getUser($id)
   {
-
+    // todo
+    return Users::findFirst($id);
   }
 
   /**
@@ -53,7 +60,11 @@ class UserController
    */
   public function updateUser($id)
   {
-
+    // todo
+    /** @var Users $user */
+    $user = Users::findFirst($id);
+    $user->name = "Todo";
+    $user->save();
   }
 
   /**
@@ -63,6 +74,9 @@ class UserController
    */
   public function deleteUser($id)
   {
-
+    // todo
+    /** @var Users $user */
+    $user = Users::findFirst($id);
+    $user->delete();
   }
 }
