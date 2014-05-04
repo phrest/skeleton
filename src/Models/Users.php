@@ -12,4 +12,15 @@ class Users extends Model
 {
   public $id;
   public $name;
+
+  public function initialize()
+  {
+    // $this->emails will get UserEmails
+    $this->hasMany(
+      "id",
+      UserEmails::class,
+      "userId",
+      ['alias' => 'emails']
+    );
+  }
 }
