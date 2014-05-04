@@ -16,9 +16,10 @@
 namespace PhalconAPISkeleton\Controllers;
 
 
+use PhalconAPI\Controllers\RESTController;
 use PhalconAPISkeleton\Models\Users;
 
-class UserController
+class UserController extends RESTController
 {
   /**
    * Get a list of Users
@@ -26,8 +27,9 @@ class UserController
    */
   public function getUsers()
   {
-    // todo
-    return Users::find();
+    $users = Users::find();
+
+    return $this->respond($users);
   }
 
   /**
@@ -49,8 +51,9 @@ class UserController
    */
   public function getUser($id)
   {
-    // todo
-    return Users::findFirst($id);
+    $user = Users::findFirst($id);
+
+    return $this->respond($user);
   }
 
   /**
