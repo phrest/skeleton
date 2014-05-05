@@ -15,12 +15,32 @@
 
 namespace PhalconAPISkeleton\Controllers;
 
-
 use PhalconAPI\Controllers\RESTController;
 use PhalconAPISkeleton\Models\Users;
 
 class UserController extends RESTController
 {
+
+  /**
+   * List of allowed fields to be returned
+   * @var array
+   */
+  protected $allowedPartialFields = [
+    'getUser' => [
+      'name'
+    ]
+  ];
+
+  /**
+   * List of fields that are allowed to be expanded
+   * @var array
+   */
+  protected $allowedExpandedFields = [
+    'getUser' => [
+      'phoneNumbers'
+    ]
+  ];
+
   /**
    * Get a list of Users
    * GET: /v1/users
@@ -29,7 +49,7 @@ class UserController extends RESTController
   {
     $users = Users::find();
 
-    return $this->respond($users);
+    return $this->respondWithModels($users);
   }
 
   /**
@@ -53,7 +73,7 @@ class UserController extends RESTController
   {
     $user = Users::findFirst($id);
 
-    return $this->respond($user);
+    return $this->respondWithModel($user, __FUNCTION__);
   }
 
   /**

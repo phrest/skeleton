@@ -1,17 +1,16 @@
 <?php
 /**
- * UserEmails - If your database names are plural, "UsersEmails" just works out of the box.
+ * UserPhoneNumbers - If your database names are plural, this just works out of the box.
  */
 
 namespace PhalconAPISkeleton\Models;
 
 use Phalcon\Mvc\Model;
 
-class UserEmails extends Model
+class UserPhoneNumbers extends Model
 {
   public $id;
-  public $userId;
-  public $email;
+  public $phoneNumber;
 
   public function initialize()
   {

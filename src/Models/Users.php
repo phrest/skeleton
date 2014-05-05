@@ -15,12 +15,12 @@ class Users extends Model
 
   public function initialize()
   {
-    // $this->emails will get UserEmails
+    // $this->phoneNumbers will get UserPhoneNumbers
     $this->hasMany(
       "id",
-      UserEmails::class,
+      UserPhoneNumbers::class,
       "userId",
-      ['alias' => 'emails']
+      ['alias' => 'phoneNumbers']
     );
   }
 }
