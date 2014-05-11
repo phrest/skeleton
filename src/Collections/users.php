@@ -21,7 +21,7 @@ return call_user_func(
       // It is advised to use a version number i.e. /v1/ in the URL
       ->setPrefix('/v1/users')
       // Must be a string in order to support lazy loading
-      ->setHandler('PhalconAPISkeleton\Controllers\UserController')
+      ->setHandler('PhrestSkeleton\Controllers\UserController')
       ->setLazy(true);
 
     // Get list of Users

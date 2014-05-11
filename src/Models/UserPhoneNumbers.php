@@ -3,7 +3,7 @@
  * UserPhoneNumbers - If your database names are plural, this just works out of the box.
  */
 
-namespace PhalconAPISkeleton\Models;
+namespace PhrestSkeleton\Models;
 
 use Phalcon\Mvc\Model;
 

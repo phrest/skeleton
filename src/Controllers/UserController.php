@@ -13,10 +13,10 @@
  * - DELETE: Deleted "User 1"
  */
 
-namespace PhalconAPISkeleton\Controllers;
+namespace PhrestSkeleton\Controllers;
 
 use PhalconAPI\Controllers\RESTController;
-use PhalconAPISkeleton\Models\Users;
+use PhrestSkeleton\Models\Users;
 
 class UserController extends RESTController
 {

@@ -4,7 +4,7 @@
  * Also, considering the URL structure of the API (/users), this works well
  */
 
-namespace PhalconAPISkeleton\Models;
+namespace PhrestSkeleton\Models;
 
 use Phalcon\Mvc\Model;
 
