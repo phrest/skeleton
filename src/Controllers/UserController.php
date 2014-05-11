@@ -16,6 +16,8 @@
 namespace PhrestSkeleton\Controllers;
 
 use PhrestAPI\Controllers\RESTController;
+use PhrestAPI\Exceptions\HandledException;
+use PhrestSkeleton\Exceptions\Users\UserNotFoundException;
 use PhrestSkeleton\Models\Users;
 
 class UserController extends RESTController
@@ -68,10 +70,17 @@ class UserController extends RESTController
    * Get a User
    * GET: /v1/users/1
    * @param $id
+   * @throws \PhrestSkeleton\Exceptions\Users\UserNotFoundException
+   * @return \PhrestAPI\Responses\Response
    */
   public function getUser($id)
   {
     $user = Users::findFirst($id);
+
+    if(!$user)
+    {
+      throw new UserNotFoundException;
+    }
 
     return $this->respondWithModel($user, __FUNCTION__);
   }
