@@ -17,6 +17,7 @@
     }
   },
   "require":     {
-    "phrest/api": "dev-master"
+    "phrest/api": "dev-master",
+    "phrest/sdk": "dev-master"
   }
 }
