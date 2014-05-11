@@ -1,9 +1,9 @@
 <?php
 require dirname(__DIR__) . '/vendor/autoload.php';
 
-use PhrestAPI\SDK;
 use PhrestAPI\API;
 use Phalcon\DI\FactoryDefault as DefaultDI;
+use PhrestSDK\SDK;
 
 /**
  * Example internal API usage
@@ -80,7 +80,9 @@ printf('<p>Response is returned as "%s" </p>', get_class($response));
 // Status Code
 echo '<h2>Status Code</h2>';
 echo '<p>Response status code is returned as a HTTP status code.</p>';
-var_dump($response->code);
+var_dump($response->meta->statusCode);
+echo '<br>';
+var_dump($response->meta->statusMessage);
 echo '<hr>';
 
 // Meta
