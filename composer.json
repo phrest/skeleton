@@ -3,7 +3,7 @@
   "type":        "library",
   "description": "REST API Skeleton Project for Phalcon PHP",
   "keywords":    ["phalcon", "rest", "api", "api first", "apigee", "skeleton", "example", "project"],
-  "homepage":    "https://github.com/torches/phalcon-api-skeleton",
+  "homepage":    "https://github.com/phrest/skeleton",
   "license":     "MIT",
   "authors":     [
     {
