@@ -1,8 +1,8 @@
 <?php
 require dirname(__DIR__) . '/vendor/autoload.php';
 
-use PhalconAPI\SDK;
-use PhalconAPI\API;
+use PhrestAPI\SDK;
+use PhrestAPI\API;
 use Phalcon\DI\FactoryDefault as DefaultDI;
 
 /**

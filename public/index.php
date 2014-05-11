@@ -2,13 +2,13 @@
 /**
  * Phalcon Skeleton REST API Project: Front Controller
  */
-use Phalcon\DI\FactoryDefault as DefaultDI,
-  Phalcon\Config\Adapter\Ini as IniConfig,
-  Phalcon\Loader;
+use Phalcon\DI\FactoryDefault as DefaultDI;
+use  Phalcon\Config\Adapter\Ini as IniConfig;
+use  Phalcon\Loader;
+use PhrestAPI\API;
 
 // Include the composer autoloader
 require dirname(__DIR__) . '/vendor/autoload.php';
-
 
 /*
  * The DI is our direct injector.  It will store pointers to all of our services
@@ -52,5 +52,5 @@ $di->set(
 /*
  * Bootstrap the Phalcon REST API Application
  */
-$app = new \PhalconAPI\API($di);
+$app = new API($di);
 $app->handle();

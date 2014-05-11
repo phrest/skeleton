@@ -15,7 +15,7 @@
 
 namespace PhrestSkeleton\Controllers;
 
-use PhalconAPI\Controllers\RESTController;
+use PhrestAPI\Controllers\RESTController;
 use PhrestSkeleton\Models\Users;
 
 class UserController extends RESTController
