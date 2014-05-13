@@ -1,7 +1,7 @@
-Phalcon API Skeleton Project
+PhREST Skeleton Project
 ====================
 
-A Phalcon REST skeleton project, uses Phrest to provide
+A Phalcon REST skeleton project, uses PhREST to provide
 a PHP REST API based on Phalcon PHP.
 
 Installation
