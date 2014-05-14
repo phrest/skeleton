@@ -83,7 +83,7 @@ class API extends PhrestAPI
     $collection = new Collection();
     $collection->name = 'Users';
     $collection->prefix = '/v1/users';
-    $collection->controller = 'WZAPI\Controllers\UserController';
+    $collection->controller = 'PhrestSkeleton\Controllers\UserController';
 
     // Get list of Users
     $collection->routes[] = CollectionRoute::get('/', 'getUsers');
