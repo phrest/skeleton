@@ -33,7 +33,7 @@ class API extends PhrestAPI
       'config',
       function ()
       {
-        return new IniConfig(dirname(__DIR__) . "/src/Config/config.ini");
+        return new IniConfig($this->srcDir . "/Config/config.ini");
       }
     );
 
