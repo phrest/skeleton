@@ -3,9 +3,9 @@
  * Phalcon Skeleton REST API Project: Front Controller
  */
 use Phalcon\DI\FactoryDefault as DefaultDI;
-use  Phalcon\Config\Adapter\Ini as IniConfig;
-use  Phalcon\Loader;
-use PhrestAPI\API;
+use Phalcon\Config\Adapter\Ini as IniConfig;
+use Phalcon\Loader;
+use PhrestAPI\PhrestAPI;
 
 // Include the composer autoloader
 require dirname(__DIR__) . '/vendor/autoload.php';
@@ -52,5 +52,5 @@ $di->set(
 /*
  * Bootstrap the Phalcon REST API Application
  */
-$app = new API($di);
+$app = new PhrestAPI($di);
 $app->handle();
