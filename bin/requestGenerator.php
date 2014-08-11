@@ -5,9 +5,9 @@
  * Request classes are great if you include the API as part of your app
  * as they save you from manually making requests over HTTP
  */
-use WZAPI\Common\DI\APIDI;
 use PhrestSDK\Generator;
-use WZAPI\Common\SDK\SDK;
+use PhrestSkeleton\Common\SDK;
+use PhrestSkeleton\Common\APIDI;
 
 // Include the composer autoloader
 require dirname(__DIR__) . '/vendor/autoload.php';
