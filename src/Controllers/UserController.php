@@ -17,64 +17,74 @@ namespace PhrestSkeleton\Controllers;
 
 use PhrestAPI\Controllers\RESTController;
 use PhrestAPI\Exceptions\HandledException;
+use PhrestSkeleton\Exceptions\Users\InvalidNameException;
 use PhrestSkeleton\Exceptions\Users\UserNotFoundException;
 use PhrestSkeleton\Models\Users;
+use PhrestSkeleton\Responses\Users\UserResponse;
+use PhrestSkeleton\Responses\Users\UsersResponse;
 
 class UserController extends RESTController
 {
 
   /**
-   * List of allowed fields to be returned
-   * @var array
-   */
-  protected $allowedPartialFields = [
-    'getUser' => [
-      'name'
-    ]
-  ];
-
-  /**
-   * List of fields that are allowed to be expanded
-   * @var array
-   */
-  protected $allowedExpandedFields = [
-    'getUser' => [
-      'phoneNumbers'
-    ]
-  ];
-
-  /**
    * Get a list of Users
+   *
    * GET: /v1/users
    */
   public function getUsers()
   {
+    /** @var Users[] $users */
     $users = Users::find();
 
-    return $this->respondWithModels($users);
+    // Building "Responses" allows for better
+    // type hinting when using the API internally
+    $responses = new UsersResponse();
+
+    foreach($users as $user)
+    {
+      $response = new UserResponse(
+        $user->id,
+        $user->name
+      );
+
+      $responses->addResponse($response);
+    }
+
+    return $responses;
   }
 
   /**
    * Create a User
    * POST: /v1/users
+   *
+   * @postParam("name")
    */
   public function createUser()
   {
-    // todo
+    $name = $this->request->getPost('name');
+    if(!$name)
+    {
+      throw new InvalidNameException;
+    }
+
     $user = new Users();
     $user->name = "Todo";
     $user->save();
+
+    return new UserResponse($user->id, $user->name);
   }
 
   /**
    * Get a User
    * GET: /v1/users/1
+   *
    * @param $id
    * @throws \PhrestSkeleton\Exceptions\Users\UserNotFoundException
    * @return \PhrestAPI\Responses\Response
    */
   public function getUser($id)
   {
+    /** @var Users $user */
     $user = Users::findFirst($id);
 
     if(!$user)
@@ -82,25 +92,44 @@ class UserController extends RESTController
       throw new UserNotFoundException;
     }
 
-    return $this->respondWithModel($user, __FUNCTION__);
+    return new UserResponse($user->id, $user->name);
   }
 
   /**
    * Update a User
    * PUT: /v1/users/1
+   *
    * @param $id
+   *
+   * @postParam("name")
+   * @throws \PhrestAPI\Exceptions\HandledException
+   * @return \PhrestSkeleton\Responses\Users\UserResponse
    */
   public function updateUser($id)
   {
-    // todo
+    $updateFields = $this->request->getPost();
+    if(count($updateFields) === 0)
+    {
+      throw new HandledException('Invalid Request', 400);
+    }
+
     /** @var Users $user */
     $user = Users::findFirst($id);
-    $user->name = "Todo";
+
+    // Update name
+    if(isset($updateFields['name']))
+    {
+      $user->name = $updateFields['name'];
+    }
+
     $user->save();
+
+    return new UserResponse($user->id, $user->name);
   }
 
   /**
    * Delete a User
+   *
    * DELETE: /v1/users/1
    * @param $id
    */

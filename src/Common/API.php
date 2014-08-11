@@ -8,57 +8,10 @@ use PhrestAPI\Collections\Collection;
 use PhrestAPI\Collections\CollectionRoute;
 use PhrestAPI\PhrestAPI;
 use Phalcon\DI\FactoryDefault as DefaultDI;
-use Phalcon\Config\Adapter\Ini as IniConfig;
-use Phalcon\Db\Adapter\Pdo\Mysql as MySQLAdapter;
+
 
 class API extends PhrestAPI
 {
-
-  public function __construct()
-  {
-
-    /*
-     * The DI is our direct injector.  It will store pointers to all of our services
-     * and we will insert it into all of our controllers.
-     * @var DefaultDI
-     */
-    $di = new DefaultDI();
-
-    /*
-     * $di's setShared method provides a singleton instance.
-     * If the second parameter is a function, then the service is lazy-loaded
-     * on its first instantiation.
-     */
-    $di->setShared(
-      'config',
-      function ()
-      {
-        return new IniConfig($this->srcDir . "/Config/config.ini");
-      }
-    );
-
-    /*
-     * Database connection is created based in the parameters defined in the configuration file
-     */
-    $di->set(
-      'db',
-      function () use ($di)
-      {
-        $config = $di->get('config');
-        return new MySQLAdapter(
-          array(
-            "host" => $config->database->host,
-            "username" => $config->database->username,
-            "password" => $config->database->password,
-            "dbname" => $config->database->name
-          )
-        );
-      }
-    );
-
-    // Hand off to PhrestAPI
-    return parent::__construct($di, dirname(__DIR__));
-  }
 
   /**
    * Main method to return the collections
@@ -81,7 +34,7 @@ class API extends PhrestAPI
   {
     // Collection
     $collection = new Collection();
-    $collection->name = 'Users';
+    //$collection->name = 'Users';
     $collection->prefix = '/v1/users';
     $collection->controller = 'PhrestSkeleton\Controllers\UserController';
 
