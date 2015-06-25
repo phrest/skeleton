@@ -1,0 +1,6 @@
+database:
+  host: localhost
+  username: root
+  password: password
+  name: phalcon-api-skeleton
+namespace: Phrest\Skeleton

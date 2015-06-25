@@ -1,0 +1,58 @@
+v1:
+  Users:
+    requests:
+      post:
+        createUser:
+          url: /
+          postParams:
+            name: string
+            email: string
+            password: string
+          doc: Create a user
+          returns: UserResponse
+          throws:
+            extends: ResourceNotFoundException
+            exception: InvalidParametersException
+            message: Invalid parameters supplied
+      get:
+        getUser:
+          url: /{id:[0-9]+}
+          doc: Get a User
+          returns: UserResponse
+          throws:
+            extends: ResourceNotFoundException
+            exception: UserNotFoundException
+            message: The user you requested could not be found
+        getUsers:
+          url: /
+          doc: Get a list of users
+          returns: UsersResponse
+      put:
+        updateUser:
+          url: /{id:[0-9]+}
+          doc: Update a user
+          returns: UserResponse
+          postParams:
+            name: string
+            email: string
+            password: string
+          throws:
+            extends: ResourceNotFoundException
+            exception: UserNotFoundException
+            message: The user you requested could not be found and updated
+      delete:
+        deleteUser:
+          url: /{id:[0-9]+}
+
+          doc: Delete a user
+          returns: UserResponse
+          throws:
+            extends: ResourceNotFoundException
+            exception: UserNotFoundException
+            message: The user you requested could not be found and deleted
+    model:
+      columns:
+        id: int
+        name: string
+        email: string
+        password: string

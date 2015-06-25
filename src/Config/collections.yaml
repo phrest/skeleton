@@ -1,0 +1,13 @@
+---
+v1:
+  Users:
+    post:
+      createUser: /
+    get:
+      getUser: /{id:[0-9]+}
+      getUsers: /
+    put:
+      updateUser: /{id:[0-9]+}
+    delete:
+      deleteUser: /{id:[0-9]+}
+...

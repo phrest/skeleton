@@ -1,9 +1,9 @@
 <?php
 
-namespace PhrestSkeleton\Common;
+namespace Phrest\Skeleton\Common;
 
-use PhrestAPI\DI\PhrestDI;
-use Phalcon\Config\Adapter\Ini as IniConfig;
+use Phalcon\Config\Adapter\Yaml;
+use Phrest\API\DI\PhrestDI;
 use Phalcon\Db\Adapter\Pdo\Mysql as MySQLAdapter;
 
 class APIDI extends PhrestDI
@@ -49,7 +49,18 @@ class APIDI extends PhrestDI
       'config',
       function ()
       {
-        return new IniConfig(dirname(__DIR__) . "/Config/config.ini");
+        return new Yaml(dirname(__DIR__) . "/Config/config.yaml");
+      }
+    );
+
+    $this->setShared(
+      'collectionConfig',
+      function ()
+      {
+        if (is_file(dirname(__DIR__) . "/Config/collections.yaml"))
+        {
+          return new Yaml(dirname(__DIR__) . "/Config/collections.yaml");
+        }
       }
     );
 
@@ -61,6 +72,7 @@ class APIDI extends PhrestDI
       function ()
       {
         $config = $this->get('config');
+
         return new MySQLAdapter(
           array(
             "host" => $config->database->host,

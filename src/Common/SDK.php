@@ -1,10 +1,9 @@
 <?php
 
+namespace Phrest\Skeleton\Common;
 
-namespace PhrestSkeleton\Common;
-
-
-use PhrestSDK\PhrestSDK;
+use Phrest\API\PhrestAPI;
+use Phrest\SDK\PhrestSDK;
 
 class SDK extends PhrestSDK
 {
@@ -13,8 +12,8 @@ class SDK extends PhrestSDK
   public function __construct(APIDI $di)
   {
     // Configure the API App
-    $this->setApp(new API($di));
+    $this->setApp(new PhrestAPI($di));
 
-    parent::__construct(realpath(__DIR__));
+    parent::__construct(realpath(__DIR__ . '/../'));
   }
 }
