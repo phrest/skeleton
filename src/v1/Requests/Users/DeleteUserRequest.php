@@ -9,14 +9,14 @@ use Phrest\SDK\PhrestSDK;
 class DeleteUserRequest extends AbstractRequest
 {
 
-    /**
-     * @var string
-     */
+  /**
+   * @var string
+   */
   private $path = '/v1/users/%s';
 
-    /**
-     * @var mixed
-     */
+  /**
+   * @var mixed
+   */
   public $id = null;
 
   /**
@@ -35,12 +35,13 @@ class DeleteUserRequest extends AbstractRequest
     $requestOptions = new RequestOptions();
     if (!isset($this->id))
     {
-    throw new \Exception("Parameter 'id' is required. It is a GET parameter.");
+      throw new \Exception("Parameter 'id' is required. It is a GET parameter.");
     }
+
     return PhrestSDK::getResponse(
-    self::METHOD_DELETE,
-    sprintf($this->path, $this->id),
-    $requestOptions
+      self::METHOD_DELETE,
+      sprintf($this->path, $this->id),
+      $requestOptions
     );
   }
 
@@ -52,8 +53,8 @@ class DeleteUserRequest extends AbstractRequest
   public function setId($id)
   {
     $this->id = $id;
+
     return $this;
   }
-
 
 }

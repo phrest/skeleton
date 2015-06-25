@@ -9,29 +9,29 @@ use Phrest\SDK\PhrestSDK;
 class UpdateUserRequest extends AbstractRequest
 {
 
-    /**
-     * @var string
-     */
+  /**
+   * @var string
+   */
   private $path = '/v1/users/%s';
 
-    /**
-     * @var mixed
-     */
+  /**
+   * @var mixed
+   */
   public $id = null;
 
-    /**
-     * @var string
-     */
+  /**
+   * @var string
+   */
   public $name = null;
 
-    /**
-     * @var string
-     */
+  /**
+   * @var string
+   */
   public $email = null;
 
-    /**
-     * @var string
-     */
+  /**
+   * @var string
+   */
   public $password = null;
 
   /**
@@ -40,7 +40,12 @@ class UpdateUserRequest extends AbstractRequest
    * @param string $email
    * @param string $password
    */
-  public function __construct($id = null, $name = null, $email = null, $password = null)
+  public function __construct(
+    $id = null,
+    $name = null,
+    $email = null,
+    $password = null
+  )
   {
     $this->id = $id;
     $this->name = $name;
@@ -55,20 +60,21 @@ class UpdateUserRequest extends AbstractRequest
   {
     $requestOptions = new RequestOptions();
     $requestOptions->addPostParams(
-    [
-    'name' => $this->name,
-    'email' => $this->email,
-    'password' => $this->password,
-    ]
+      [
+        'name' => $this->name,
+        'email' => $this->email,
+        'password' => $this->password,
+      ]
     );
     if (!isset($this->id))
     {
-    throw new \Exception("Parameter 'id' is required. It is a GET parameter.");
+      throw new \Exception("Parameter 'id' is required. It is a GET parameter.");
     }
+
     return PhrestSDK::getResponse(
-    self::METHOD_PUT,
-    sprintf($this->path, $this->id),
-    $requestOptions
+      self::METHOD_PUT,
+      sprintf($this->path, $this->id),
+      $requestOptions
     );
   }
 
@@ -80,6 +86,7 @@ class UpdateUserRequest extends AbstractRequest
   public function setId($id)
   {
     $this->id = $id;
+
     return $this;
   }
 
@@ -91,6 +98,7 @@ class UpdateUserRequest extends AbstractRequest
   public function setName($name)
   {
     $this->name = $name;
+
     return $this;
   }
 
@@ -102,6 +110,7 @@ class UpdateUserRequest extends AbstractRequest
   public function setEmail($email)
   {
     $this->email = $email;
+
     return $this;
   }
 
@@ -113,8 +122,8 @@ class UpdateUserRequest extends AbstractRequest
   public function setPassword($password)
   {
     $this->password = $password;
+
     return $this;
   }
-
 
 }

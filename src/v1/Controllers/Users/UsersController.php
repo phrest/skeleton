@@ -30,17 +30,18 @@ class UsersController extends RESTController
     $user->password = $this->request->getPost('password', 'trim');
     if (!$user->save())
     {
-    $exception = '';
-    foreach ($user->getMessages() as $message)
-    {
-    $exception .= $message->getMessage();
+      $exception = '';
+      foreach ($user->getMessages() as $message)
+      {
+        $exception .= $message->getMessage();
+      }
+      throw new InvalidParametersException(
+        'Invalid parameters supplied: ' . $exception
+      );
     }
-    throw new InvalidParametersException(
-    'Invalid parameters supplied: ' . $exception
-    );
-    }
+
     return new UserResponse(
-    $user->id, $user->name, $user->email, $user->password
+      $user->id, $user->name, $user->email, $user->password
     );
   }
 
@@ -58,10 +59,11 @@ class UsersController extends RESTController
     $user = Users::findFirst($id);
     if (!$user)
     {
-    throw new UserNotFoundException('The user you requested could not be found');
+      throw new UserNotFoundException('The user you requested could not be found');
     }
+
     return new UserResponse(
-    $user->id, $user->name, $user->email, $user->password
+      $user->id, $user->name, $user->email, $user->password
     );
   }
 
@@ -76,11 +78,12 @@ class UsersController extends RESTController
     $response = new UsersResponse();
     foreach (Users::find() as $user)
     {
-    $response->addResponse(
-    new UserResponse(
-    $user->id, $user->name, $user->email, $user->password
-    ));
+      $response->addResponse(
+        new UserResponse(
+          $user->id, $user->name, $user->email, $user->password
+        ));
     }
+
     return $response;
   }
 
@@ -101,24 +104,25 @@ class UsersController extends RESTController
     $user = Users::findFirst($id);
     if (!$user)
     {
-    throw new UserNotFoundException('The user you requested could not be found and updated');
+      throw new UserNotFoundException('The user you requested could not be found and updated');
     }
     $user->name = $this->request->getPost('name', 'trim');
     $user->email = $this->request->getPost('email', 'trim');
     $user->password = $this->request->getPost('password', 'trim');
     if (!$user->save())
     {
-    $exception = '';
-    foreach ($user->getMessages() as $message)
-    {
-    $exception .= $message->getMessage();
+      $exception = '';
+      foreach ($user->getMessages() as $message)
+      {
+        $exception .= $message->getMessage();
+      }
+      throw new InvalidParametersException(
+        'Invalid parameters supplied: ' . $exception
+      );
     }
-    throw new InvalidParametersException(
-    'Invalid parameters supplied: ' . $exception
-    );
-    }
+
     return new UserResponse(
-    $user->id, $user->name, $user->email, $user->password
+      $user->id, $user->name, $user->email, $user->password
     );
   }
 
@@ -136,13 +140,13 @@ class UsersController extends RESTController
     $user = Users::findFirst($id);
     if (!$user)
     {
-    throw new UserNotFoundException('The user you requested could not be found and deleted');
+      throw new UserNotFoundException('The user you requested could not be found and deleted');
     }
     $user->delete();
+
     return new UserResponse(
-    $user->id, $user->name, $user->email, $user->password
+      $user->id, $user->name, $user->email, $user->password
     );
   }
-
 
 }

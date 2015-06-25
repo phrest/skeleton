@@ -7,24 +7,24 @@ use Phrest\API\Responses\Response;
 class UserResponse extends Response
 {
 
-    /**
-     * @var int
-     */
+  /**
+   * @var int
+   */
   public $id = null;
 
-    /**
-     * @var string
-     */
+  /**
+   * @var string
+   */
   public $name = null;
 
-    /**
-     * @var string
-     */
+  /**
+   * @var string
+   */
   public $email = null;
 
-    /**
-     * @var string
-     */
+  /**
+   * @var string
+   */
   public $password = null;
 
   /**
@@ -41,6 +41,5 @@ class UserResponse extends Response
     $this->password = $password;
     parent::__construct();
   }
-
 
 }

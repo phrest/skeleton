@@ -7,24 +7,24 @@ use Phalcon\Mvc\Model;
 class Users extends Model
 {
 
-    /**
-     * @var int
-     */
+  /**
+   * @var int
+   */
   public $id = null;
 
-    /**
-     * @var string
-     */
+  /**
+   * @var string
+   */
   public $name = null;
 
-    /**
-     * @var string
-     */
+  /**
+   * @var string
+   */
   public $email = null;
 
-    /**
-     * @var string
-     */
+  /**
+   * @var string
+   */
   public $password = null;
 
   /**
@@ -44,6 +44,5 @@ class Users extends Model
   {
     return parent::findFirst($params);
   }
-
 
 }

@@ -9,9 +9,9 @@ use Phrest\SDK\PhrestSDK;
 class GetUsersRequest extends AbstractRequest
 {
 
-    /**
-     * @var string
-     */
+  /**
+   * @var string
+   */
   private $path = '/v1/users/';
 
   /**
@@ -20,12 +20,12 @@ class GetUsersRequest extends AbstractRequest
   public function create()
   {
     $requestOptions = new RequestOptions();
+
     return PhrestSDK::getResponse(
-    self::METHOD_GET,
-    $this->path,
-    $requestOptions
+      self::METHOD_GET,
+      $this->path,
+      $requestOptions
     );
   }
-
 
 }

@@ -9,24 +9,24 @@ use Phrest\SDK\PhrestSDK;
 class CreateUserRequest extends AbstractRequest
 {
 
-    /**
-     * @var string
-     */
+  /**
+   * @var string
+   */
   private $path = '/v1/users/';
 
-    /**
-     * @var string
-     */
+  /**
+   * @var string
+   */
   public $name = null;
 
-    /**
-     * @var string
-     */
+  /**
+   * @var string
+   */
   public $email = null;
 
-    /**
-     * @var string
-     */
+  /**
+   * @var string
+   */
   public $password = null;
 
   /**
@@ -48,16 +48,17 @@ class CreateUserRequest extends AbstractRequest
   {
     $requestOptions = new RequestOptions();
     $requestOptions->addPostParams(
-    [
-    'name' => $this->name,
-    'email' => $this->email,
-    'password' => $this->password,
-    ]
+      [
+        'name' => $this->name,
+        'email' => $this->email,
+        'password' => $this->password,
+      ]
     );
+
     return PhrestSDK::getResponse(
-    self::METHOD_POST,
-    $this->path,
-    $requestOptions
+      self::METHOD_POST,
+      $this->path,
+      $requestOptions
     );
   }
 
@@ -69,6 +70,7 @@ class CreateUserRequest extends AbstractRequest
   public function setName($name)
   {
     $this->name = $name;
+
     return $this;
   }
 
@@ -80,6 +82,7 @@ class CreateUserRequest extends AbstractRequest
   public function setEmail($email)
   {
     $this->email = $email;
+
     return $this;
   }
 
@@ -91,8 +94,8 @@ class CreateUserRequest extends AbstractRequest
   public function setPassword($password)
   {
     $this->password = $password;
+
     return $this;
   }
-
 
 }

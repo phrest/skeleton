@@ -7,5 +7,4 @@ use Phrest\API\Exceptions\ResourceNotFoundException;
 class InvalidParametersException extends ResourceNotFoundException
 {
 
-
 }

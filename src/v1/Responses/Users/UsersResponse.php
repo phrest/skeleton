@@ -7,5 +7,4 @@ use Phrest\API\Responses\ResponseArray;
 class UsersResponse extends ResponseArray
 {
 
-
 }
